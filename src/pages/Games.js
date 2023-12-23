@@ -17,7 +17,7 @@ export default function Games({setGame, next, previous}) {
             <button className="text-indigo-600 mt-3 ml-3 fixed top-0 left-0" onClick={previous}>
                 <ArrowLeftIcon className="text-indigo-600 h-6 w-6 inline"/>
                 &nbsp;
-                Retour
+                Retour aux joueurs
             </button>
             <div className="text-center">
                 <PuzzlePieceIcon className="text-indigo-600 h-12 w-12 m-auto"></PuzzlePieceIcon>

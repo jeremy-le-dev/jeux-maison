@@ -10,7 +10,7 @@ export default function ListPlayers({ players, deletePlayer, activeEditMode, edi
             <thead>
             <tr>
                 <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 dark:text-slate-200 text-left">Joueurs</th>
-                <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 dark:text-slate-200 text-left" width="150">Victoires</th>
+                <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 dark:text-slate-200 text-center" width="150">Victoires</th>
                 <th className="border-b dark:border-slate-600 font-medium py-4 text-slate-400 dark:text-slate-200 text-left" width="45">&nbsp;</th>
                 <th className="border-b dark:border-slate-600 font-medium py-4 text-slate-400 dark:text-slate-200 text-left" width="45">&nbsp;</th>
             </tr>
@@ -29,7 +29,7 @@ export default function ListPlayers({ players, deletePlayer, activeEditMode, edi
                             </button>
                         </form> : player.name}
                     </td>
-                    <td className="border-b border-slate-100 text-left dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
+                    <td className="border-b border-slate-100 text-center dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
                         {player.points}
                     </td>
                     <td className="border-b border-slate-100 text-center dark:border-slate-700 p-0 text-slate-500 dark:text-slate-400">

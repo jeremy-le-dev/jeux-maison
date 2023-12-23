@@ -5,64 +5,82 @@ import Order from './pages/Order';
 import {useState} from "react";
 
 export default function App() {
-    const [players, setPlayers] = useState([]);
-    const [state, setState] = useState('players');
-    const [game, setGame] = useState(false);
+  const [state, setState] = useState('play');
+  const [game, setGame] = useState('25');
+  const [players, setPlayers] = useState([
+    {
+      name: 'toto',
+      points: 0,
+    },
+    {
+      name: 'tutu',
+      points: 0,
+    },
+    {
+      name: 'tete',
+      points: 0,
+    },
+  ]);
 
-    const next = () => {
-        switch(state) {
-            default:
-            case 'players':
-                setState('games');
-                break;
-            case 'games':
-                setState('order');
-                break;
-            case 'order':
-                setState('play')
-                break;
-            case 'play':
-                setState('players')
-                break;
-        }
+  const next = () => {
+    switch (state) {
+      default:
+      case 'players':
+        setState('games');
+        break;
+      case 'games':
+        setState('order');
+        break;
+      case 'order':
+        setState('play')
+        break;
+      case 'play':
+        setState('players')
+        break;
     }
+  }
 
-    const previous = () => {
-        switch(state) {
-            default:
-            case 'players':
-                break;
-            case 'games':
-                setState('players');
-                break;
-            case 'order':
-                setState('games')
-                break;
-            case 'play':
-                setState('order');
-                break;
-        }
+  const previous = () => {
+    switch (state) {
+      default:
+      case 'players':
+        break;
+      case 'games':
+        setState('players');
+        break;
+      case 'order':
+        setState('games')
+        break;
+      case 'play':
+        setState('order');
+        break;
     }
+  }
 
-    return (
-        <div className="bg-white">
+  const onConfirmRefresh = function (event) {
+    event.preventDefault();
+    return event.returnValue = "Êtes-vous sur de vouloir quitter tout recommencer ?";
+  }
 
-            {state === 'players' &&
-                <Players players={players} setPlayers={setPlayers} next={next}/>
-            }
+  window.addEventListener("beforeunload", onConfirmRefresh, {capture: true});
 
-            {state === 'games' &&
-                <Games setGame={setGame} next={next} previous={previous}/>
-            }
+  return (
+    <div className="bg-white">
+      {state === 'players' &&
+        <Players players={players} setPlayers={setPlayers} next={next}/>
+      }
 
-            {state === 'order' &&
-                <Order players={players} setPlayers={setPlayers} next={next} previous={previous}/>
-            }
+      {state === 'games' &&
+        <Games setGame={setGame} next={next} previous={previous}/>
+      }
 
-            {state === 'play' &&
-                <Game game={game} players={players} setPlayers={setPlayers} next={next} previous={previous} />
-            }
+      {state === 'order' &&
+        <Order players={players} setPlayers={setPlayers} next={next} previous={previous}/>
+      }
 
-        </div>
-    );
+      {state === 'play' &&
+        <Game game={game} players={players} setPlayers={setPlayers} next={next} previous={previous}/>
+      }
+    </div>
+  );
 }

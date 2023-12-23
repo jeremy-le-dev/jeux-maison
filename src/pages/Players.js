@@ -3,33 +3,33 @@ import {useState} from "react";
 import ListPlayers from "../components/ListPlayers";
 
 export default function Players({players, setPlayers, next}) {
-    const [name, setName] = useState('');
-    const addPlayer = (evt) => {
-        evt.preventDefault();
-        const tmp = {
-            name: name,
-            points: 0,
-        };
-        setPlayers(current => [...current, tmp]);
-        setName('');
+  const [name, setName] = useState('');
+  const addPlayer = (evt) => {
+    evt.preventDefault();
+    const tmp = {
+      name: name,
+      points: 0,
     };
+    setPlayers(current => [...current, tmp]);
+    setName('');
+  };
 
-    const deletePlayer = (index) => {
-        setPlayers(players.filter((item, _index) => _index !== index));
-    };
+  const deletePlayer = (index) => {
+    setPlayers(players.filter((item, _index) => _index !== index));
+  };
 
-    const activeEditMode = (index) => {
-        const tmpPlayers = [...players];
-        tmpPlayers[index].edit = true;
-        setPlayers(tmpPlayers);
-    };
+  const activeEditMode = (index) => {
+    const tmpPlayers = [...players];
+    tmpPlayers[index].edit = true;
+    setPlayers(tmpPlayers);
+  };
 
-    const editPlayer = (index, name) => {
-        const tmpPlayers = [...players];
-        tmpPlayers[index].name = name;
-        tmpPlayers[index].edit = false;
-        setPlayers(tmpPlayers);
-    }
+  const editPlayer = (index, name) => {
+    const tmpPlayers = [...players];
+    tmpPlayers[index].name = name;
+    tmpPlayers[index].edit = false;
+    setPlayers(tmpPlayers);
+  }
 
     return (
         <div className="mx-auto max-w-7xl py-12 px-6 lg:px-8">
